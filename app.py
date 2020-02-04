@@ -31,6 +31,18 @@ students = {
 
 
 class Student(Resource):
+    parser = reqparse.RequestParser()
+    parser.add_argument(
+        'username',
+        type=str
+    )
+    parser.add_argument(
+        'age',
+        type=int,
+        required=True,
+        help="This is a required field"
+    )
+
     @jwt_required()
     def get(self, student_id=None):
         if student_id is not None:
@@ -40,9 +52,9 @@ class Student(Resource):
 
     @jwt_required()
     def post(self):
-        data = request.get_json() or request.form
+        data = Student.parser.parse_args()
         student_id = len(students) + 1
-        student_name = data.get('name')
+        student_name = data.get('username')
         if any(student['name'] == student_name for _, student in students.items()):
             return {
                 'message': f'A student with username {student_name} already exists'
@@ -60,9 +72,9 @@ class Student(Resource):
     @jwt_required()
     def put(self, student_id=None):
         if student_id is not None:
-            data = request.get_json() or request.form
             student = students.get(student_id)
             if student:
+                data = Student.parser.parse_args()
                 student.update(data)
                 return student
         abort(404)

@@ -51,6 +51,25 @@ class Student(Resource):
 
         return student, 201
 
+    @jwt_required()
+    def put(self, student_id=None):
+        if student_id is not None:
+            data = request.get_json() or request.form
+            student = students.get(student_id)
+            if student:
+                student.update(data)
+                return student
+        abort(404)
+
+    @jwt_required()
+    def delete(self, student_id=None):
+        global students
+        if student_id is not None:
+            if student_id in students:
+                del students[student_id]
+                return {'message': 'Student has been deleted'}
+        abort(404)
+
 
 api.add_resource(Student, '/students/', '/students/<int:student_id>/')
 

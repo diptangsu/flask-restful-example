@@ -57,3 +57,25 @@ response = requests.post(URL_ALL_STUDENTS, json={
     'age': 23
 }, headers=headers)
 print_response(response)
+
+# check PUT student
+response = requests.put(URL_STUDENT_1, json={
+    'name': 'Diptangsu',
+    'age': 23
+}, headers=headers)
+print_response(response)
+
+# check PUT student fail
+response = requests.put(URL_STUDENT_111111, json={
+    'name': 'Dip',
+    'age': 23
+}, headers=headers)
+print_response(response)
+
+# check DELETE student
+response = requests.delete(URL_STUDENT_1, headers=headers)
+print_response(response)
+
+# check DELETE student fail
+response = requests.delete(URL_STUDENT_111111, headers=headers)
+print_response(response)

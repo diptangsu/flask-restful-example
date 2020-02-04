@@ -1,5 +1,5 @@
 from flask import Flask, request, abort
-from flask_restful import Api, Resource
+from flask_restful import Api, Resource, reqparse
 from flask_jwt import JWT, jwt_required
 
 from security import authinticate, identity
@@ -42,9 +42,15 @@ class Student(Resource):
     def post(self):
         data = request.get_json() or request.form
         student_id = len(students) + 1
+        student_name = data.get('name')
+        if any(student['name'] == student_name for _, student in students.items()):
+            return {
+                'message': f'A student with username {student_name} already exists'
+            }, 400
+
         student = {
             'id': student_id,
-            'name': data.get('name'),
+            'name': student_name,
             'age': data.get('age')
         }
         students[student_id] = student

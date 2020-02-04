@@ -58,6 +58,13 @@ response = requests.post(URL_ALL_STUDENTS, json={
 }, headers=headers)
 print_response(response)
 
+# check POST student fail
+response = requests.post(URL_ALL_STUDENTS, json={
+    'name': 'Dip',
+    'age': 23
+}, headers=headers)
+print_response(response)
+
 # check PUT student
 response = requests.put(URL_STUDENT_1, json={
     'name': 'Diptangsu',

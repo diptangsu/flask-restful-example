@@ -55,7 +55,12 @@ class Student(Resource):
         data = Student.parser.parse_args()
         student_id = len(students) + 1
         student_name = data.get('username')
-        if any(student['name'] == student_name for _, student in students.items()):
+
+        student_names_matched = (
+            student['name'] == student_name
+            for _, student in students.items()
+        )
+        if any(student_names_matched):
             return {
                 'message': f'A student with username {student_name} already exists'
             }, 400

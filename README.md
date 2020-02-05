@@ -1,35 +1,23 @@
 # Flask Restful Example
 
 ```
-¦   .gitignore
-¦   app.py
-¦   README.md
-¦   requirements.txt
-¦
-+---auth
-¦   ¦   security.py
-¦   ¦   __init__.py
-¦   ¦
-¦   +---__pycache__
-¦           security.cpython-37.pyc
-¦           __init__.cpython-37.pyc
-¦
-+---models
-¦   ¦   user.py
-¦   ¦   __init__.py
-¦   ¦
-¦   +---__pycache__
-¦           user.cpython-37.pyc
-¦           __init__.cpython-37.pyc
-¦
-+---resources
-¦   ¦   student.py
-¦   ¦   __init__.py
-¦   ¦
-¦   +---__pycache__
-¦           student.cpython-37.pyc
-¦           __init__.cpython-37.pyc
-¦
-+---tests
+â”‚   .gitignore
+â”‚   app.py
+â”‚   README.md
+â”‚   requirements.txt
+â”‚
+â”œâ”€â”€â”€auth
+â”‚       security.py
+â”‚       __init__.py
+â”‚
+â”œâ”€â”€â”€models
+â”‚       user.py
+â”‚       __init__.py
+â”‚
+â”œâ”€â”€â”€resources
+â”‚       student.py
+â”‚       __init__.py
+â”‚
+â””â”€â”€â”€tests
         test.py
 ```

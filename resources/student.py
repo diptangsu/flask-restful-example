@@ -22,7 +22,7 @@ students = {
 }
 
 
-class Student(Resource):
+class StudentResource(Resource):
     parser = reqparse.RequestParser()
     parser.add_argument(
         'username',
@@ -37,6 +37,10 @@ class Student(Resource):
 
     @jwt_required()
     def get(self, student_id=None):
+        '''
+        GET /students/ -> get all students
+        GET /students/{id}/ -> get student with id=id
+        '''
         if student_id is not None:
             return students.get(student_id) or abort(404)
         else:
@@ -44,6 +48,8 @@ class Student(Resource):
 
     @jwt_required()
     def post(self):
+        '''POST /students/ -> add a new student
+        '''
         data = Student.parser.parse_args()
         student_id = len(students) + 1
         student_name = data.get('username')
@@ -68,6 +74,8 @@ class Student(Resource):
 
     @jwt_required()
     def put(self, student_id=None):
+        '''PUT /students/{id} -> update student with id=id
+        '''
         if student_id is not None:
             student = students.get(student_id)
             if student:
@@ -78,6 +86,8 @@ class Student(Resource):
 
     @jwt_required()
     def delete(self, student_id=None):
+        '''DELETE /students/{id} -> delete student with id=id
+        '''
         global students
         if student_id is not None:
             if student_id in students:

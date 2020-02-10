@@ -35,7 +35,7 @@ class StudentResource(Resource):
         help="This is a required field"
     )
 
-    @jwt_required()
+    # @jwt_required()
     def get(self, student_id=None):
         '''
         GET /students/ -> get all students

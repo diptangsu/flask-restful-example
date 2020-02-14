@@ -1,23 +1,19 @@
 # Flask Restful Example
 
 ```
-│   .gitignore
-│   app.py
-│   README.md
-│   requirements.txt
-│
-├───auth
-│       security.py
-│       __init__.py
-│
-├───models
-│       user.py
-│       __init__.py
-│
-├───resources
-│       student.py
-│       __init__.py
-│
-└───tests
-        test.py
+.
+├── app.py
+├── auth
+│   └── security.py
+├── .gitignore
+├── models
+│   └── user.py
+├── README.md
+├── requirements.txt
+├── resources
+│   └── student.py
+└── tests
+    └── test.py
+
+4 directories, 7 files
 ```
